@@ -1,12 +1,15 @@
 import { stdin, stdout } from 'process';
 import * as readline from 'readline';
-import * as os from 'os';
 import { goodbyMassage, invalidMassage, pathMassage, welcomeMassage } from './massages/messages.js';
 import { getStartPath } from './pathManager/getStartPath.js';
 import { returnUpPath } from './pathManager/returnUpPath.js';
 import {changePathToFolder} from './pathManager/changePath.js';
 import { listAllFolderItems } from './pathManager/listAllFolderItems.js';
 import { getOsCpus, getOsEOL, getOsArch, getOsUsername, getOsHomedir } from './os/osFunctions.js';
+import { readFile } from './files/readFile.js';
+import { createFile } from './files/createFile.js';
+import { renameFile } from './files/renameFile.js';
+
 
 const rl = readline.createInterface({
   input: stdin,
@@ -61,15 +64,29 @@ rl.on('line', async (input) => {
 });
 
 async function additionalHandle(input) {
-  if (input.startsWith('cd')) {
+  if (input.startsWith('cd') && input.split(' ')[1]) {
     const addNewPath = input.split(' ')[1].trim()
     const newPath = await changePathToFolder(path, addNewPath);
     if (newPath) {
       path = newPath;
     } 
     consolePath();
-  } else if () {
-
+  } else if (input.startsWith('cat' && input.split(' ')[1])) {
+    const pathToFile = input.split(' ')[1].trim();
+    await readFile(path, pathToFile);
+    consolePath();
+  } else if (input.startsWith('add' && input.split(' ')[1])) {
+    const fileName = input.split(' ')[1].trim();
+    await createFile(path, fileName);
+    consolePath();
+  } else if (input.startsWith('rn') && input.split(' ').length === 3) {
+    const [pathToFile, fileName] = input.split(' ').slice(1);
+    await renameFile(path, pathToFile, fileName);
+    consolePath();
+  } else if (input.startsWith('cp') && input.split(' ').length === 3) {
+    const [pathToFile, pathToNewDirectory] = input.split(' ').slice(1);
+    await copyFile(path, pathToFile, pathToNewDirectory);
+    consolePath();
   } else {
     console.error(invalidMassage())
   }
@@ -79,3 +96,5 @@ const consolePath = () => {
   rl.setPrompt(pathMassage(path));
   rl.prompt();
 }
+
+// при вводе без аргументов всплывает ошибка

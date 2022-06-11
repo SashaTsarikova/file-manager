@@ -1,19 +1,19 @@
 export const pathMassage = (path) => {
-  return `\nYou are currently in ${path} \n`
+  return `\n\x1b[33mYou are currently in ${path}\x1b[33m \n`
 }
 
 export const welcomeMassage = (userName) => {
-  return `Welcome to the File Manager, ${userName}! \n`
+  return `\x1b[32mWelcome to the File Manager, ${userName}!\x1b[32m \n`
 }
 
 export const goodbyMassage = (userName) => {
-  return `\nThank you for using File Manager, ${userName}! \n`
+  return `\n\x1b[32mThank you for using File Manager, ${userName}!\x1b[32m \n`
 }
 
 export const invalidMassage = () => {
-  return `\nInvalid input! \n`
+  return `\n\x1b[33mInvalid input!\x1b[33m \n`
 }
 
 export const operationFailedMassage = () => {
-  return `\nOperation failed! \n`
+  return `\n\x1b[31mOperation failed!\x1b[31m \n`
 }

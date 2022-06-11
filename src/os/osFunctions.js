@@ -1,11 +1,7 @@
 import * as os from 'node:os';
 
 export const getOsEOL = () => {
-  if (os.EOL === '\n') {
-    console.log('\\n')
-  } else if (os.EOL === '\r\n') {
-    console.log('\\r\\n')
-  }
+  console.log(JSON.stringify(os.EOL));
 };
 
 export const getOsCpus = () => {
