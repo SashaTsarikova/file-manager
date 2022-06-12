@@ -17,3 +17,7 @@ export const invalidMassage = () => {
 export const operationFailedMassage = () => {
   return `\n\x1b[31mOperation failed!\x1b[31m \n`
 }
+
+export const successMassage = () => {
+  return `\x1b[32mOperation has been performed successfully!\x1b[32m \n`
+}

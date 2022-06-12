@@ -1,4 +1,4 @@
-import { operationFailedMassage } from '../massages/messages.js';
+import { operationFailedMassage, successMassage } from '../massages/messages.js';
 import * as path from 'node:path';
 import { getFilePath } from '../pathManager/getFilePath.js';
 import { copyFile as copyF } from 'fs/promises';
@@ -12,6 +12,7 @@ export const copyFile = async (prevPath, pathToF, pathToNewDirectory) => {
     const pathObjNew = path.parse(newPathToFile);
 
     await copyF(pathToFile, getNewFilePath(newPathToFile, pathObjNew.ext, pathObjPrev.base), constants.COPYFILE_FICLONE);
+    console.log(successMassage());
   } catch(error) {
       console.error(operationFailedMassage(), error);
   }

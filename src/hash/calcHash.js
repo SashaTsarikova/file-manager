@@ -12,7 +12,7 @@ export const calcHash = async (prevPath, pathToAdd) => {
                   .digest('hex');
     console.log(hash);
     return hash;
-  } catch {
+  } catch(error) {
     console.error(operationFailedMassage(), error);
   }
 };

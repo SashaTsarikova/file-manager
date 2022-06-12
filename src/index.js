@@ -13,6 +13,8 @@ import { copyFile } from './files/copyFile.js';
 import { moveFile } from './files/moveFile.js';
 import { deleteFile } from './files/deleteFile.js';
 import { calcHash } from './hash/calcHash.js';
+import { compressFile } from './arch/compressFile.js';
+import { decompressFile } from './arch/decompressFile.js';
 
 
 const rl = readline.createInterface({
@@ -102,6 +104,14 @@ async function additionalHandle(input) {
   } else if (input.startsWith('hash') && input.split(' ')[1]) {
     const pathToFile = input.split(' ')[1].trim();
     await calcHash(path, pathToFile);
+    consolePath();
+  } else if (input.startsWith('compress') && input.split(' ').length === 3) {
+    const [pathToFile, pathToDestination] = input.split(' ').slice(1);
+    await compressFile(path, pathToFile, pathToDestination);
+    consolePath();
+  } else if (input.startsWith('decompress') && input.split(' ').length === 3) {
+    const [pathToFile, pathToDestination] = input.split(' ').slice(1);
+    await decompressFile(path, pathToFile, pathToDestination);
     consolePath();
   } else {
     console.error(invalidMassage());
