@@ -13,7 +13,7 @@ export const changePathToFolder = async (pathPrev, addNewPath) => {
     }
     await readdir(newPath);
     return newPath;
-  } catch {
-    console.error(operationFailedMassage())
+  } catch(error) {
+    console.error(operationFailedMassage(), error)
   }
 }

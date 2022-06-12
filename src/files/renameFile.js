@@ -10,7 +10,7 @@ export const renameFile = async (prevPath, pathToF, fileName) => {
     await rename(getNewFilePath(pathObj, null), getNewFilePath(pathObj, fileName));
     console.log(successMassage());
   } catch(error) {
-      console.error(operationFailedMassage());
+      console.error(operationFailedMassage(), error);
   }
 };
 

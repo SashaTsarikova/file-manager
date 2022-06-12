@@ -7,6 +7,6 @@ export const listAllFolderItems = async (path) => {
         for (const file of files)
             console.log(`\x1b[36m${file}\x1b[36m`);
     } catch(error) {
-        console.error(operationFailedMassage());
+        console.error(operationFailedMassage(), error);
     }
 };

@@ -8,6 +8,6 @@ export const createFile = async (directPath, fileName) => {
     await writeFile(pathToFile, '', { encoding: 'utf8', flag: 'wx'});
     console.log(successMassage());
   } catch(error) {
-      console.error(operationFailedMassage());
+      console.error(operationFailedMassage(), error);
   }
 };
