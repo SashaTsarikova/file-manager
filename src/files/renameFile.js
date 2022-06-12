@@ -24,9 +24,3 @@ function getNewFilePath(pathObj, newName) {
   }
   return path.join(pathObj.dir,pathObj.base)
 }
-
-// cd Desktop
-// add Sasha.txt
-
-// rn ./Sasha.txt Lera.txt
-// rn C:\Users\user\Desktop\Lera.txt Vova

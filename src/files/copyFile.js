@@ -25,7 +25,3 @@ function getNewFilePath(pathToFile, ext, name) {
     return path.join(pathToFile, name)
   }
 }
-
-// cd Desktop
-// cp CV.pdf text/CV.pdf
-// cp Vova.txt text

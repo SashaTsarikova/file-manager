@@ -13,12 +13,6 @@ export const readFile = async (path, pathToF) => {
   }
 };
 
-// cat Desktop/Vova.txt
-// cd Desktop
-// cat CV.pdf
-// C:\Users\user\Desktop\CV.pdf
-
-
 // export const readFile = async (path, pathToF) => {
 //   let fd;
 //   try {

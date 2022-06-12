@@ -12,6 +12,3 @@ export const moveFile = async (prevPath, pathToF, pathToNewDirectory) => {
     console.error(operationFailedMassage(), error);
   }
 }
-
-// cd Desktop
-// mv text/Vova.txt ..
