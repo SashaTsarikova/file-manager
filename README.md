@@ -22,7 +22,8 @@ This node.js app gives you possibility to work with the files in your computer w
 [X] __hash path_to_file__ Calculate hash for file and print it into console
 
 [X] __compress path_to_file path_to_destination__ Compress file (using Brotli algorytm)
+  after compressing file will have name+ext like old_file_name.old_file_ext.br
+  f.e. text.txt => text.txt.br
 [X] __decompress path_to_file path_to_destination__ Decompress file (using Brotli algorytm)
-
 
 ### Paths to be typed instead of "path_to_file" (and ext.) could be either relative (like '../text.txt', 'test/text.txt') or absolute (like "C:\Users\user\Desktop\test\text.docx")

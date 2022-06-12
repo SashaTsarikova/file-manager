@@ -38,3 +38,7 @@ function getPathToCompressFile(prevPath, pathToDestination, name) {
   } 
   return path.join(pathToFile, `${name}.br`)
 }
+
+// usage: 
+// after compressing file will have name+ext like old_file_name.old_file_ext.br
+// f.e. text.txt => text.txt.br
