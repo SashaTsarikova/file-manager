@@ -1,5 +1,5 @@
 export const pathMassage = (path) => {
-  return `\n\x1b[33mYou are currently in ${path}\x1b[33m \n`
+  return `\n\x1b[37mYou are currently in ${path}\x1b[37m \n`
 }
 
 export const welcomeMassage = (userName) => {
@@ -11,7 +11,7 @@ export const goodbyMassage = (userName) => {
 }
 
 export const invalidMassage = () => {
-  return `\n\x1b[33mInvalid input!\x1b[33m \n`
+  return `\n\x1b[31mInvalid input!\x1b[31m \n`
 }
 
 export const operationFailedMassage = () => {

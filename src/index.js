@@ -9,6 +9,10 @@ import { getOsCpus, getOsEOL, getOsArch, getOsUsername, getOsHomedir } from './o
 import { readFile } from './files/readFile.js';
 import { createFile } from './files/createFile.js';
 import { renameFile } from './files/renameFile.js';
+import { copyFile } from './files/copyFile.js';
+import { moveFile } from './files/moveFile.js';
+import { deleteFile } from './files/deleteFile.js';
+import { calcHash } from './hash/calcHash.js';
 
 
 const rl = readline.createInterface({
@@ -71,11 +75,11 @@ async function additionalHandle(input) {
       path = newPath;
     } 
     consolePath();
-  } else if (input.startsWith('cat' && input.split(' ')[1])) {
+  } else if (input.startsWith('cat') && input.split(' ')[1]) {
     const pathToFile = input.split(' ')[1].trim();
     await readFile(path, pathToFile);
     consolePath();
-  } else if (input.startsWith('add' && input.split(' ')[1])) {
+  } else if (input.startsWith('add') && (input.split(' ').length > 1)) {
     const fileName = input.split(' ')[1].trim();
     await createFile(path, fileName);
     consolePath();
@@ -87,8 +91,21 @@ async function additionalHandle(input) {
     const [pathToFile, pathToNewDirectory] = input.split(' ').slice(1);
     await copyFile(path, pathToFile, pathToNewDirectory);
     consolePath();
+  } else if (input.startsWith('mv') && input.split(' ').length === 3) {
+    const [pathToFile, pathToNewDirectory] = input.split(' ').slice(1);
+    await moveFile(path, pathToFile, pathToNewDirectory);
+    consolePath();
+  } else if (input.startsWith('rm') && input.split(' ')[1]) {
+    const pathToFile = input.split(' ')[1].trim();
+    await deleteFile(path, pathToFile);
+    consolePath();
+  } else if (input.startsWith('hash') && input.split(' ')[1]) {
+    const pathToFile = input.split(' ')[1].trim();
+    await calcHash(path, pathToFile);
+    consolePath();
   } else {
-    console.error(invalidMassage())
+    console.error(invalidMassage());
+    consolePath();
   }
 }
 
@@ -98,3 +115,4 @@ const consolePath = () => {
 }
 
 // при вводе без аргументов всплывает ошибка
+// сделать более компактный код

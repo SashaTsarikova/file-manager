@@ -6,7 +6,6 @@ import { rename } from 'fs/promises';
 export const renameFile = async (prevPath, pathToF, fileName) => {
   try {
     const pathToFile = getFilePath(prevPath, pathToF);
-    console.log(pathToFile);
     const pathObj = path.parse(pathToFile);
     await rename(getNewFilePath(pathObj, null), getNewFilePath(pathObj, fileName));
   } catch(error) {
